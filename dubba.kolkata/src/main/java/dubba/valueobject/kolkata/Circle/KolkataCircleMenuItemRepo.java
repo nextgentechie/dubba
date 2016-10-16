@@ -1,7 +1,7 @@
-package dubba.valueobject.kolkata.MenuItem;
+package dubba.valueobject.kolkata.Circle;
 
 import org.springframework.stereotype.Repository;
 import org.springframework.data.mongodb.repository.MongoRepository;
 @Repository
-public interface MenuItemRepo extends MongoRepository<MenuItems, String>{
+public interface KolkataCircleMenuItemRepo extends MongoRepository<MenuItems, String>{
 }

@@ -1,11 +1,15 @@
-package dubba.valueobject.kolkata.MenuItem;
+package dubba.valueobject.kolkata.Circle;
+
+import java.io.Serializable;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import dubba.valueobject.kolkata.GeneralItem.CommonGenericObject;
+
 @Document(collection="menuitems")
 
-public class MenuItems {
+public class MenuItems extends CommonGenericObject implements Serializable{
 	@Id
     private String menuid;
     private String menuname;

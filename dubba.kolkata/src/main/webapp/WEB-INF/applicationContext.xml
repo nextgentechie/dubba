@@ -33,6 +33,6 @@
 	    <constructor-arg name="databaseName" value="dubbakolkata"/>
    </bean>
 
-    <mongo:repositories base-package="dubba.valueobject.kolkata.MenuItem"></mongo:repositories>
-
+    <mongo:repositories base-package="dubba.valueobject.kolkata.Circle.MenuItems"></mongo:repositories>   
+	<mongo:repositories base-package="dubba.valueobject.kolkata.Circle.UserBasicDetails"></mongo:repositories>   
 </beans>
