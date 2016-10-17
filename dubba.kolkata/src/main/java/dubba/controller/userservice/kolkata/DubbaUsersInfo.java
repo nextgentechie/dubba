@@ -1,6 +1,8 @@
 package dubba.controller.userservice.kolkata;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -11,13 +13,13 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import dubba.util.CommonUtils;
-import dubba.valueobject.kolkata.Circle.KolkataCircleMenuItemRepo;
-import dubba.valueobject.kolkata.Circle.UserBasicDetails;
-import dubba.valueobject.kolkata.Circle.UserBasicDetailsRepo;
+import dubba.valueobject.kolkata.circle.MenuItemRepo;
+import dubba.valueobject.kolkata.circle.UserBasicDetails;
+import dubba.valueobject.kolkata.circle.UserBasicDetailsRepo;
 
 
 @RestController
-@RequestMapping(value = "/user")
+@RequestMapping(value = "/kolkatauser")
 public class DubbaUsersInfo {
 	@Autowired
 	private UserBasicDetailsRepo repository;
@@ -27,17 +29,17 @@ public class DubbaUsersInfo {
 			HttpServletResponse response) throws IOException {
 		String message = "Success";
 		try {
-			System.out.println("############################ Call Update MenuItem Service #############################");
+			System.out.println("############################ Call Update Delevary Service #############################");
 			//menuList = new DubbaKolkataMenuListDAO().getMenuListDetails();
 			UserBasicDetails dubbauser = new UserBasicDetails();
 			dubbauser.setName("A Bose");	
 			dubbauser.setAddress("Baguihati");
 			dubbauser.setState("West Bengal");
 			dubbauser.setCity("Kolkata");
-			dubbauser.setContactno("9230559097");
+			dubbauser.setContactno("9230559099");
 			dubbauser.setCreatedBy("A Bose");
-			dubbauser.setImeino("98658655652302");
-			dubbauser.setUserid("0002USER");
+			dubbauser.setImeino("98658655652301");
+			dubbauser.setUserid("0003USER");
 			dubbauser.setEmail("abose@gmail.com");
 			dubbauser.setLat("0.0");
 			dubbauser.setLng("0.0");
@@ -52,8 +54,11 @@ public class DubbaUsersInfo {
 		return message;
 	}
 	@RequestMapping(value = "/getDetails", method = RequestMethod.POST)
-	public String getDetails (HttpServletRequest request,
+	public List<UserBasicDetails> getDetails (HttpServletRequest request,
 			HttpServletResponse response) throws IOException {
-		return "";
+		String imeino = request.getParameter("imeino");
+		List<UserBasicDetails> userList = repository.findByImeino(imeino);
+		//List<UserBasicDetails> userList = new ArrayList();
+		return userList;
 	}
 }

@@ -1,4 +1,4 @@
-package dubba.valueobject.kolkata.Circle;
+package dubba.valueobject.kolkata.circle;
 
 import java.io.Serializable;
 

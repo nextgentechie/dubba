@@ -11,15 +11,15 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import com.google.gson.Gson;
 import dubba.util.CommonUtils;
-import dubba.valueobject.kolkata.Circle.KolkataCircleMenuItemRepo;
-import dubba.valueobject.kolkata.Circle.MenuItems;
+import dubba.valueobject.kolkata.circle.MenuItemRepo;
+import dubba.valueobject.kolkata.circle.MenuItems;
 
 @RestController
 @RequestMapping(value = "/menu")
 public class KolkataDubbaMenu {
     
 	@Autowired
-	private KolkataCircleMenuItemRepo repository;
+	private MenuItemRepo repository;
 	
 	@RequestMapping(value = "/getItems", method = RequestMethod.POST)
 	public String getItems (HttpServletRequest request,
@@ -47,11 +47,11 @@ public class KolkataDubbaMenu {
 			System.out.println("############################ Call Update MenuItem Service #############################");
 			//menuList = new DubbaKolkataMenuListDAO().getMenuListDetails();
 			MenuItems menuitems = new MenuItems();
-			menuitems.setMenuid("0010MI");	
+			menuitems.setMenuid("0011MI");	
 			menuitems.setMenuname("Non Veg Combo");
-			menuitems.setMenucode("NVC");
-			menuitems.setMenudesc("Rice,Dal,Alu Bhaja,Fish,Chicken");
-			menuitems.setMenuprice("150.0");
+			menuitems.setMenucode("NVM");
+			menuitems.setMenudesc("Rice,Dal,Alu Bhaja,Fish,Mutton");
+			menuitems.setMenuprice("170.0");
 			menuitems.setCreatedBy("adminsystem");
 			menuitems.setCreatedatetime(CommonUtils.getLocalTime());
 			//menuitems.setModifiedBy(null);
