@@ -13,16 +13,18 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
 	xmlns:p="http://www.springframework.org/schema/p" xmlns:mvc="http://www.springframework.org/schema/mvc"	
+	xmlns:aop="http://www.springframework.org/schema/aop"
 	xmlns:mongo="http://www.springframework.org/schema/data/mongo"	
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 			http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.1.xsd
 			http://www.springframework.org/schema/data/mongo http://www.springframework.org/schema/data/mongo/spring-mongo-1.0.xsd			
-			http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.1.xsd">
+			http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.1.xsd
+			http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.0.xsd">
 
 	<context:annotation-config />
 	<context:component-scan base-package="dubba.controller.*"></context:component-scan>	
 	<mvc:annotation-driven />
-
+	<aop:aspectj-autoproxy />
 	<mvc:resources location="/resources/" mapping="/resources/**" />
      <!-- Configure the Mongo Server -->
 
@@ -31,7 +33,21 @@
     <bean id="mongoTemplate" class="org.springframework.data.mongodb.core.MongoTemplate">
 	    <constructor-arg ref="mongo"/>
 	    <constructor-arg name="databaseName" value="dubbakolkata"/>
-   </bean>
+    </bean>
+	<bean
+		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="prefix" value="/view/" />
+		<property name="suffix" value=".jsp" />
+		<property name="order" value="1" />
+	</bean>
+	<bean id="logAspect" class="dubba.util.DubbaLogger" />
+	<mvc:interceptors>
+		<bean class="dubba.util.TimeLoggerInterceptor" />
+		<mvc:interceptor>
+			<mvc:mapping path="/*" />
+			<bean class="dubba.util.TimeLoggerInterceptor" />
+		</mvc:interceptor>
+	</mvc:interceptors>
 
     <mongo:repositories base-package="dubba.valueobject.kolkata.circle"></mongo:repositories>   
 	   

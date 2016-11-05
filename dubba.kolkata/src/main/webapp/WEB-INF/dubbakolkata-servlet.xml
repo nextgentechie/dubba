@@ -9,4 +9,5 @@
 	<bean id="jspViewResolver"
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver"
 		p:prefix="/WEB-INF/pages/" p:suffix=".html" p:order="1" />
+	
 </beans>

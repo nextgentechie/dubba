@@ -5,8 +5,6 @@ import java.io.Serializable;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-import dubba.valueobject.kolkata.GeneralItem.CommonGenericObject;
-
 @Document(collection="partnerdetails")
 public class PartnerDetails extends CommonGenericObject implements Serializable{
 	    private String name;

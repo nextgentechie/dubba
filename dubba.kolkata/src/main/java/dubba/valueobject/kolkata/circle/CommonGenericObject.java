@@ -1,11 +1,18 @@
-package dubba.valueobject.kolkata.GeneralItem;
+package dubba.valueobject.kolkata.circle;
 
-public class CommonGenericObject {
+import java.io.Serializable;
 
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
+
+@Document(collection="loggermaster")
+public class CommonGenericObject implements Serializable{
+ 
 	private String createdBy;
 	private String modifiedBy;
 	private String createdatetime;
 	private String modifieddatetime;
+	
 	public String getCreatedBy() {
 		return createdBy;
 	}
@@ -30,4 +37,5 @@ public class CommonGenericObject {
 	public void setModifieddatetime(String modifieddatetime) {
 		this.modifieddatetime = modifieddatetime;
 	}
+	
 }

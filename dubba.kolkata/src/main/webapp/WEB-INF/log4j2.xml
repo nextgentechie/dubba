@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Configuration>
+	<Properties>
+		<Property name="baseDir">G:/dubba_logs</Property>
+		<Property name="appName">dubbawalla</Property>
+		<Property name="archiveDir">G:/dubba_logs/archive</Property>
+		<Property name="fileSize">100 MB</Property>
+	</Properties>
+
+<Appenders>
+    <Console name="Console-Appender" target="SYSTEM_OUT">
+        <PatternLayout>
+            <pattern>
+                [%-5level] %d{yyyy-MM-dd HH:mm:ss.SSS} [%t] %c{1} - %msg%n
+            </pattern>>
+        </PatternLayout>
+    </Console>
+    <File name="File-Appender" fileName="${log-path}/xmlfilelog.log" >
+        <PatternLayout>
+            <pattern>
+                [%-5level] %d{yyyy-MM-dd HH:mm:ss.SSS} [%t] %c{1} - %msg%n
+            </pattern>
+        </PatternLayout>
+    </File>        
+</Appenders>
+
+<Loggers>
+           <Logger name="dubba.kolkata.circle.log4j2xml" level="debug">
+               <AppenderRef ref="File-Appender" level="error"/>               
+           </Logger>
+        <Root level="debug">
+            <AppenderRef ref="Console-Appender"/>
+        </Root>
+    </Loggers>
+</Configuration>

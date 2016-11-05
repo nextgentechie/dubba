@@ -10,13 +10,14 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping(value = "/common")
+@RequestMapping(value = "/user")
 public class GeneralOTPService {
 
 	@RequestMapping(value = "/genarateOTP", method = RequestMethod.POST)
 	public String genarateOTP (HttpServletRequest request,
 			HttpServletResponse response) throws IOException {
-		return "";
+		String otp = String.valueOf(Math.random());
+		return otp;
 	}
 	
 }

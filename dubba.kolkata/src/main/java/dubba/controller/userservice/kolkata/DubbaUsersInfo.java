@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.google.gson.Gson;
+
 import dubba.util.CommonUtils;
 import dubba.valueobject.kolkata.circle.MenuItemRepo;
 import dubba.valueobject.kolkata.circle.UserBasicDetails;
@@ -54,11 +56,12 @@ public class DubbaUsersInfo {
 		return message;
 	}
 	@RequestMapping(value = "/getDetails", method = RequestMethod.POST)
-	public List<UserBasicDetails> getDetails (HttpServletRequest request,
+	public String getDetails (HttpServletRequest request,
 			HttpServletResponse response) throws IOException {
 		String imeino = request.getParameter("imeino");
 		List<UserBasicDetails> userList = repository.findByImeino(imeino);
-		//List<UserBasicDetails> userList = new ArrayList();
-		return userList;
+		Gson gson = new Gson();
+		String userListDetailsStr = gson.toJson(userList);		
+		return userListDetailsStr;
 	}
 }
