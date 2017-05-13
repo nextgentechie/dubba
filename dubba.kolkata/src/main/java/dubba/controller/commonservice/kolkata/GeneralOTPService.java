@@ -16,8 +16,8 @@ public class GeneralOTPService {
 	@RequestMapping(value = "/genarateOTP", method = RequestMethod.POST)
 	public String genarateOTP (HttpServletRequest request,
 			HttpServletResponse response) throws IOException {
-		String otp = String.valueOf(Math.random());
-		return otp;
+		
+		return String.valueOf(Math.random());
 	}
 	
 }

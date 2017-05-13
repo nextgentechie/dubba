@@ -25,9 +25,8 @@ public class GetProjectLog {
 	@RequestMapping(value = "/getLogDetails", method = RequestMethod.POST)
 	public String getLogDetails (HttpServletRequest request,
 			HttpServletResponse response) throws IOException {
-		List logList = (List) repository.findAll();
-		Gson gson = new Gson();
-		String logListStr = gson.toJson(logList);	
-		return logListStr;
+		List logList = repository.findAll();
+		Gson gson = new Gson();	
+		return gson.toJson(logList);
 	}
 }
